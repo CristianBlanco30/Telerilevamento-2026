@@ -46,3 +46,56 @@ plot(dif)
 
 # RGB
 im.plotRGB(gr, r=1, g=2, b=4)
+
+
+#######31/03
+
+library(terra)
+library(imageRy)
+library(viridis)
+library(ggplot2)
+
+im.list()
+#NDVI data
+ndvi <- im.import("Sentinel2_NDVI_2020")
+ndvi
+ plot(ndvi, col=magma(100))
+
+#istogrammi
+hist(ndvi)
+
+#ridgeline ploting
+install.packages("ggridges")
+library(ggridges)
+
+im.ridgeline(ndvi, scale=1, palette="viridis")
+
+names(ndvi) <- c("02_feb", "05_may", "08_aug", "011_nov")
+
+im.ridgeline(ndvi, scale=1, palette="viridis")
+im.ridgeline(ndvi, scale=1, palette="mako")
+
+im.ridgeline(ndvi, scale=2, palette="mako")
+im.ridgeline(ndvi, scale=3, palette="mako")
+
+#scatterplot plot(X,Y)
+plot(ndvi[[1]], ndvi [[2]])
+pairs(ndvi)
+
+
+# y = x
+# y = a + bx
+# y = 0 + 1x = x
+# a = 0
+# b = 1
+
+# insert the line x=y
+plot(ndvi[[1]], ndvi [[2]])
+abline(0, 1)
+
+#mettere limiti massismi
+plot(ndvi[[1]], ndvi [[2]], xlim=c(-0.3,0.9), ylim=c(-0.3,0.9))
+abline(0, 1)
+
+#cambiare colore linea
+abline(0, 1, col="red")
