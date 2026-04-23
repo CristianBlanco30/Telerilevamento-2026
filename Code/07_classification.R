@@ -88,7 +88,7 @@ perc2006
 tabout <- data.frame(
   class=c("Forest","Human"),
   perc1992=c(83, 17),
-  perc2006=c(55, 45)
+  perc2006=c(45, 55)
   )
 tabout
 
@@ -99,4 +99,28 @@ source("im.barplot.R")
 
 im.barplot(m1992c)
 im.barplot(m2006c)
+
+
+#################
+
+library(ggplot2)
+library(patchwork)
+
+
+# Dopo la tabella
+
+p1 <- ggplot(tabout, aes(x=class, y=perc1992, color=class)) + 
+geom_bar(stat="identity", fill="white") +
+ylim(c(0, 100)) + #limits
+theme(legend.position="none") #remove legend
+
+p2 <- ggplot(tabout, aes(x=class, y=perc2006, color=class)) + 
+     geom_bar(stat="identity", fill="white") +
+     ylim(c(0, 100)) + #limits
+theme(legend.position="none") #remove legend
+
+#per metterli accanto
+p1 + p2
+
+
 
