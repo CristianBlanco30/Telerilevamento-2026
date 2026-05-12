@@ -1,0 +1,80 @@
+---
+title: "Kampagnola"
+author: "cristianblanco"
+format: revealjs
+editor: visual
+---
+
+# Intro
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+# Coding
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+## Installare `imageRy`da GitHub
+
+Per installare `imageRy`:
+
+```{r echo=T, eval=F}
+# devtools::install_github("ducciorocchini/imageRy")
+```
+
+## How to load `imageRy`
+
+Si può usare `imageRy` come pacchetto:
+
+```{r echo=T}
+library(imageRy)
+```
+
+## Lista files
+
+Lista di files in `imageRy`:
+
+```{r echo=T}
+im.list()
+```
+
+## Lista files (senza lista solo funzione, false evaluation)
+
+Lista di files in `imageRy` senza che parta la funzione:
+
+```{r echo=T, eval=F}
+im.list()
+```
+
+## Importare un'immagine
+
+```{r echo=T}
+library(terra)
+blett <- im.import("bletterbach.jpg")
+```
+
+# Analisi dati
+
+## Indici
+
+Un potenziale indice riguarda la sottrazione delle prime due bande:
+xgwììhe cazzo vuolo vuole questa stronza maledetta
+
+```{r echo=T}
+index <- blett[[1]]-blett[[2]]
+plot(index)
+```
